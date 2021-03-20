@@ -1,22 +1,15 @@
 import React from "react";
+import styled from "styled-components";
+import { useToken } from "./hooks/useToken";
+
+/* Components */
+import Logo from './components/Logo';
+import Picture from './components/Picture';
+
 import Home from "./components/Home";
 import ImageButtons from "./components/ImageButtons";
-import styled from "styled-components";
-import images from "./assets/images/imagePlace.jpg";
 import FileInput from "./components/FileInput";
-import { useToken } from "./hooks/useToken";
 import YouTubePlayer from './components/YouTubePlayer';
-
-const Title = styled.h1`
-  font-size: 3em;
-  color: #191f31;
-  text-align: center;
-`;
-
-const Img1 = styled.img`
-  width: 275px;
-  height: 275px;
-`;
 
 const Text1 = styled.div`
   color: white;
@@ -29,9 +22,9 @@ const App = () => {
 
   return (
     <>
-      <Title>Moodify</Title>
+      <Logo />
       <div>
-        <Img1 src={images} alt="Placeholder Image"></Img1>
+        <Picture />
         <div>
           <ImageButtons text="Upload Image" />
           <Text1>Or</Text1>
