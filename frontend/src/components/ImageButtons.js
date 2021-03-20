@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Button = styled.button`
   color: white;
@@ -8,12 +8,12 @@ const Button = styled.button`
   border: 1px solid black;
 `;
 
-const ImageButtons = (props) =>{
-    return(
-        <>
-        <Button>{props.text}</Button>
-      </>
-    )
-}
+const ImageButtons = (props) => {
+  return (
+    <>
+      <Button>{props.text}</Button>
+    </>
+  );
+};
 
 export default ImageButtons;

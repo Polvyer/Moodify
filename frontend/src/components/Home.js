@@ -1,12 +1,12 @@
-import React from 'react';
+import React from "react";
 
 const Home = (props) => {
   return (
     <>
       <div>Name: {props.text}</div>
     </>
-  )
-}
+  );
+};
 
 /*const App = () => {
   return (

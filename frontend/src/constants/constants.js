@@ -4,9 +4,9 @@ const TWO_MINUTE_DELAY_IN_MS = 120000;
 
 /* Express API Endpoints */
 const EXPRESS_BASE_URL = process.env.REACT_APP_EXPRESS_BASE_URL;
-const YOUTUBE_ENDPOINT = EXPRESS_BASE_URL + '/youtube';
-const SPOTIFY_ENDPOINT = EXPRESS_BASE_URL + '/spotify';
-const VISION_ENDPOINT = EXPRESS_BASE_URL + '/vision';
+const YOUTUBE_ENDPOINT = EXPRESS_BASE_URL + "/youtube";
+const SPOTIFY_ENDPOINT = EXPRESS_BASE_URL + "/spotify";
+const VISION_ENDPOINT = EXPRESS_BASE_URL + "/vision";
 
 /* Spotify API Endpoints */
 const SPOTIFY_SEARCH_ENDPOINT = "https://api.spotify.com/v1/search";
