@@ -5,16 +5,10 @@ import { useToken } from "./hooks/useToken";
 /* Components */
 import Logo from './components/Logo';
 import Picture from './components/Picture';
+import ImageOptions from './components/ImageOptions';
 
-import Home from "./components/Home";
-import ImageButtons from "./components/ImageButtons";
 import FileInput from "./components/FileInput";
 import YouTubePlayer from './components/YouTubePlayer';
-
-const Text1 = styled.div`
-  color: white;
-  text-align: center;
-`;
 
 const App = () => {
   const [token] = useToken();
@@ -25,15 +19,7 @@ const App = () => {
       <Logo />
       <div>
         <Picture />
-        <div>
-          <ImageButtons text="Upload Image" />
-          <Text1>Or</Text1>
-          <ImageButtons text="Upload Image" />
-        </div>
-
-        <div>
-          <input type="file" accept="image/png, image/jpeg" />
-        </div>
+        <ImageOptions />
       </div>
     </>
   );

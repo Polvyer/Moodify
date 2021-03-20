@@ -4,16 +4,15 @@ import styled from "styled-components";
 const Button = styled.button`
   color: white;
   background-color: #b24e53;
-  padding: 10px;
-  border: 1px solid black;
+  padding: 18px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.2rem;
 `;
 
 const ImageButtons = (props) => {
-  return (
-    <>
-      <Button>{props.text}</Button>
-    </>
-  );
+  return <Button>{props.text}</Button>
 };
 
 export default ImageButtons;
