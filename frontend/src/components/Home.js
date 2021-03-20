@@ -8,4 +8,16 @@ const Home = (props) => {
   )
 }
 
+/*const App = () => {
+  return (
+    <div>
+      <p>Hello World!</p>
+      <Home text="Amy" />
+      <Home text="Jasmine" />
+      <Button>Click me!</Button>
+    </div>
+  );
+};
+*/
+
 export default Home;
