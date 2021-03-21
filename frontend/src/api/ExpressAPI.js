@@ -13,8 +13,14 @@ const ExpressAPI = {
   getKey: () => {
     return axios.get(YOUTUBE_ENDPOINT);
   },
-  getMood: () => {
-    return axios.post(VISION_ENDPOINT);
+  getMood: (formData) => {
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      }
+    };
+
+    return axios.post(VISION_ENDPOINT, formData, config);
   },
 };
 

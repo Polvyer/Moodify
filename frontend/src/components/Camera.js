@@ -39,26 +39,30 @@ const Camera = ({ setPicture, picture, setShowCamera }) => {
 
   const takePicture = (e) => {
     const context = canvasRef.current.getContext("2d");
-    console.log(context);
     context.drawImage(videoRef.current, 0, 0, 380, 240);
     const url = canvasRef.current.toDataURL('image/png');
     changePicture(url);
   };
 
   const changePicture = (url) => {
-      // Remove current picture (if any)
-      if (picture.url) { // imageFile !== null (avoid memory issues)
-        URL.revokeObjectURL(picture.url);
-      }
+    // Remove current picture (if any)
+    if (picture.url) { // imageFile !== null (avoid memory issues)
+      URL.revokeObjectURL(picture.url);
+    }
+    
+    // Convert canvas img to file
+    canvasRef.current.toBlob((blob) => {
+      blob.name = "filename.png";
 
       // Set picture
       setPicture({
-        file: null,
+        file: blob,
         url
       });
 
       // Hide camera
       setShowCamera(false);
+    });
   };
 
   return (

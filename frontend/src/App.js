@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useToken } from "./hooks/useToken";
-import axios from 'axios';
+import ExpressAPI from '../src/api/ExpressAPI';
 
 /* Components */
 import Logo from "./components/Logo";
@@ -18,6 +18,7 @@ const PictureContainer = styled.div`
 `;
 
 const App = () => {
+  const [ disabled, setDisabled ] = useState(false);
   const [showCamera, setShowCamera] = useState(false);
   const [picture, setPicture] = useState({
     file: null,
@@ -25,7 +26,6 @@ const App = () => {
   });
   const [token] = useToken();
   console.log("Token:", token);
-  console.log("Picture:", picture);
 
   const changePicture = (e) => {
     if (e.target.files.length > 0) { // Prevents a weird bug that happens when a user uploads, but then cancels
@@ -52,24 +52,24 @@ const App = () => {
     }
   };
 
-  const submit = (e) => {
+  // Where the magic happens...
+  const submit = async (e) => {
+
+    // Disable submit button
+    setDisabled(true);
+
     const formData = new FormData();
     formData.append('file', picture.file);
 
-    const config = {
-      headers: {
-        'content-type': 'multipart/form-data',
-      }
-    };
+    try {
+      const response = await ExpressAPI.getMood(formData);
+      console.log('Response:', response.data);
+    } catch (err) {
+      console.log(err);
+    }
 
-    axios.post('/api/posts', formData, config)
-      .then(response => {
-        if (response.status === 200) {
-          console.log(response.data);
-        }
-      }).catch(error => {
-        console.log(error);
-      });
+    // Enable submit button
+    setDisabled(false);
   };
 
   return (
@@ -80,7 +80,7 @@ const App = () => {
           {showCamera ? <Camera setShowCamera={setShowCamera} picture={picture} setPicture={setPicture} /> : <Picture picture={picture} />}
         </PictureContainer>
         <ImageOptions changePicture={changePicture} showCamera={showCamera} setShowCamera={setShowCamera} />
-        <SubmitButton callback={submit} />
+        <SubmitButton disabled={disabled} picture={picture} showCamera={showCamera} callback={submit} />
       </div>
     </>
   );

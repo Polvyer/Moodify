@@ -13,12 +13,26 @@ const Button = styled.button`
   border-radius: 10px;
   margin-top: 30px;
   font-size: 1.2rem;
+  margin-bottom: 30px;
+  cursor: pointer;
 `;
 
-const SubmitButton = ({ callback }) => {
+const DisabledButton = styled.button`
+  background-color: rgba(221, 157, 20, 0.5);
+  padding: 15px;
+  border: none;
+  color: white;
+  border-radius: 10px;
+  margin-top: 30px;
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  cursor: not-allowed;
+`;
+
+const SubmitButton = ({ callback, picture, showCamera, disabled }) => {
   return (
     <Container>
-      <Button onClick={e => callback(e)}>Submit</Button>
+      {!disabled && picture.file && !showCamera ? <Button onClick={e => callback(e)}>Submit</Button> : <DisabledButton disabled >Submit</DisabledButton>}
     </Container>
   );
 };
