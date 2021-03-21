@@ -1,6 +1,7 @@
 import React from 'react';
 import TakePictureButton from './TakePictureButton';
 import styled from "styled-components";
+import FileInput from './FileInput';
 
 const Container = styled.div`
   display: flex;
