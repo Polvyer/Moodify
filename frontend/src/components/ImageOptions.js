@@ -1,5 +1,5 @@
 import React from 'react';
-import ImageButtons from './ImageButton';
+import TakePictureButton from './TakePictureButton';
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -26,12 +26,12 @@ const Text = styled.b`
   text-align: center;
 `;
 
-const Buttons = () => {
+const Buttons = ({ showCamera, setShowCamera }) => {
   return (
     <Container>
-      <ImageButtons text="Upload Image" />
+      <TakePictureButton text="Upload Image" />
       <Text>OR</Text>
-      <ImageButtons text="Upload Image" />
+      <TakePictureButton callback={setShowCamera} text={showCamera ? "Hide Camera" : "Take Picture"} />
     </Container>
   );
 };
