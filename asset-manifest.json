@@ -5,13 +5,13 @@
     "main.js.map": "/Moodify/static/js/main.81862a21.chunk.js.map",
     "runtime-main.js": "/Moodify/static/js/runtime-main.0ee5977f.js",
     "runtime-main.js.map": "/Moodify/static/js/runtime-main.0ee5977f.js.map",
-    "static/js/2.1dfa45b6.chunk.js": "/Moodify/static/js/2.1dfa45b6.chunk.js",
-    "static/js/2.1dfa45b6.chunk.js.map": "/Moodify/static/js/2.1dfa45b6.chunk.js.map",
+    "static/js/2.1ca16129.chunk.js": "/Moodify/static/js/2.1ca16129.chunk.js",
+    "static/js/2.1ca16129.chunk.js.map": "/Moodify/static/js/2.1ca16129.chunk.js.map",
     "static/js/3.5b30fe47.chunk.js": "/Moodify/static/js/3.5b30fe47.chunk.js",
     "static/js/3.5b30fe47.chunk.js.map": "/Moodify/static/js/3.5b30fe47.chunk.js.map",
     "index.html": "/Moodify/index.html",
     "static/css/main.ff29c8a3.chunk.css.map": "/Moodify/static/css/main.ff29c8a3.chunk.css.map",
-    "static/js/2.1dfa45b6.chunk.js.LICENSE.txt": "/Moodify/static/js/2.1dfa45b6.chunk.js.LICENSE.txt",
+    "static/js/2.1ca16129.chunk.js.LICENSE.txt": "/Moodify/static/js/2.1ca16129.chunk.js.LICENSE.txt",
     "static/media/Spotify-Icon-Black-Logo.6e99526c.svg": "/Moodify/static/media/Spotify-Icon-Black-Logo.6e99526c.svg",
     "static/media/bad3361ef1e3546d-.74c479ab.gif": "/Moodify/static/media/bad3361ef1e3546d-.74c479ab.gif",
     "static/media/list.37ad9cd8.svg": "/Moodify/static/media/list.37ad9cd8.svg",
@@ -21,7 +21,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.0ee5977f.js",
-    "static/js/2.1dfa45b6.chunk.js",
+    "static/js/2.1ca16129.chunk.js",
     "static/css/main.ff29c8a3.chunk.css",
     "static/js/main.81862a21.chunk.js"
   ]
