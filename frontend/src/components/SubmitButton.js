@@ -12,6 +12,7 @@ const Button = styled.button`
   color: white;
   border-radius: 10px;
   margin-top: 30px;
+  font-size: 1.2rem;
 `;
 
 const SubmitButton = ({ callback }) => {
