@@ -1,6 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
+const Button = styled.input`
+  color: white;
+  background-color: #b24e53;
+  padding: 18px;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 1.2rem;
+`;
+
 class FileInput extends React.Component {
   constructor(props) {
     super(props);
@@ -15,10 +25,7 @@ class FileInput extends React.Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
-        <label>
-          Upload file:
-          <input type="file" ref={this.fileInput} />
-        </label>
+          <input type="file" accept = "image/png, image/jpeg" ref={this.fileInput} />
         <br />
         <button type="submit">Submit</button>
       </form>
