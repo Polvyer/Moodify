@@ -12,7 +12,7 @@ const VISION_ENDPOINT = EXPRESS_BASE_URL + "/vision";
 const SPOTIFY_SEARCH_ENDPOINT = "https://api.spotify.com/v1/search";
 
 /*GIPHY API KEY*/
-const APIKEY = "La98BpaXzKmJ61D8xAsleB5HU1IgTrX0"; 
+const APIKEY = "La98BpaXzKmJ61D8xAsleB5HU1IgTrX0";
 const GIPHY_SEARCH_ENDPOINT = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=`;
 
 /*
@@ -32,5 +32,5 @@ export {
   SPOTIFY_ENDPOINT,
   VISION_ENDPOINT,
   SPOTIFY_SEARCH_ENDPOINT,
-  GIPHY_SEARCH_ENDPOINT
+  GIPHY_SEARCH_ENDPOINT,
 };

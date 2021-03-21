@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import Track from './Track';
-import styled from 'styled-components';
+import React, { useState } from "react";
+import Track from "./Track";
+import styled from "styled-components";
 
 const Ul = styled.ul`
   overflow: hidden;
@@ -24,17 +24,16 @@ const Ul = styled.ul`
 `;
 
 const Scrollable = ({ playlist, setPlaylist }) => {
-
-  const [ trackPlaying, setTrackPlaying ] = useState(null);
-  const [ draggable, setDraggable ] = useState(false);
-  const [ dataTransfer, setDataTransfer ] = useState(null);
+  const [trackPlaying, setTrackPlaying] = useState(null);
+  const [draggable, setDraggable] = useState(false);
+  const [dataTransfer, setDataTransfer] = useState(null);
 
   console.log(playlist);
 
   const removeTrack = (track_id) => {
-    const playlistIds = playlist.map(track => track.id);
-    const indexFound = playlistIds.findIndex(id => track_id === id);
-    const newPlaylist = [ ...playlist ];
+    const playlistIds = playlist.map((track) => track.id);
+    const indexFound = playlistIds.findIndex((id) => track_id === id);
+    const newPlaylist = [...playlist];
     newPlaylist.splice(indexFound, 1);
     setPlaylist(newPlaylist);
   };
@@ -47,10 +46,10 @@ const Scrollable = ({ playlist, setPlaylist }) => {
   const handleDragEnter = (track_id, e) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "link";
-    const playlistIds = playlist.map(track => track.track.id);
-    const firstIndexFound = playlistIds.findIndex(id => id === track_id);
-    const secondIndexFound = playlistIds.findIndex(id => id === dataTransfer);
-    const newPlaylist = [ ...playlist ];
+    const playlistIds = playlist.map((track) => track.track.id);
+    const firstIndexFound = playlistIds.findIndex((id) => id === track_id);
+    const secondIndexFound = playlistIds.findIndex((id) => id === dataTransfer);
+    const newPlaylist = [...playlist];
     const trackHolder = newPlaylist[secondIndexFound];
     newPlaylist.splice(secondIndexFound, 1);
     newPlaylist.splice(firstIndexFound, 0, trackHolder);
@@ -59,42 +58,48 @@ const Scrollable = ({ playlist, setPlaylist }) => {
 
   const handleDrop = (track_id, e) => {
     e.preventDefault();
-    const playlistIds = playlist.map(track => track.track.id);
-    const firstIndexFound = playlistIds.findIndex(id => id === track_id);
-    const secondIndexFound = playlistIds.findIndex(id => id === e.dataTransfer.getData("id"));
-    const newPlaylist = [ ...playlist ];
+    const playlistIds = playlist.map((track) => track.track.id);
+    const firstIndexFound = playlistIds.findIndex((id) => id === track_id);
+    const secondIndexFound = playlistIds.findIndex(
+      (id) => id === e.dataTransfer.getData("id")
+    );
+    const newPlaylist = [...playlist];
     const trackHolder = newPlaylist[secondIndexFound];
     newPlaylist.splice(secondIndexFound, 1);
     newPlaylist.splice(firstIndexFound, 0, trackHolder);
     setPlaylist(newPlaylist);
   };
 
-  const handleDragOver = e => {
+  const handleDragOver = (e) => {
     e.preventDefault();
     e.dataTransfer.dropEffect = "link";
     e.stopPropagation();
   };
 
-  const handleDragEnd = e => {
+  const handleDragEnd = (e) => {
     setDraggable(false);
     setDataTransfer(null);
   };
 
   return (
     <Ul>
-      {playlist.map(track => <Track key={track.track.id} 
-        trackPlaying={trackPlaying} 
-        setTrackPlaying={setTrackPlaying} 
-        track={track.track} 
-        removeTrack={removeTrack} 
-        handleDragStart={handleDragStart} 
-        handleDragEnter={handleDragEnter} 
-        handleDrop={handleDrop} 
-        draggable={draggable} 
-        setDraggable={setDraggable} 
-        dataTransfer={dataTransfer} 
-        handleDragOver={handleDragOver} 
-        handleDragEnd={handleDragEnd} />)}
+      {playlist.map((track) => (
+        <Track
+          key={track.track.id}
+          trackPlaying={trackPlaying}
+          setTrackPlaying={setTrackPlaying}
+          track={track.track}
+          removeTrack={removeTrack}
+          handleDragStart={handleDragStart}
+          handleDragEnter={handleDragEnter}
+          handleDrop={handleDrop}
+          draggable={draggable}
+          setDraggable={setDraggable}
+          dataTransfer={dataTransfer}
+          handleDragOver={handleDragOver}
+          handleDragEnd={handleDragEnd}
+        />
+      ))}
     </Ul>
   );
 };

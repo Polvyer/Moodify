@@ -8,7 +8,12 @@ const Image = styled.img`
 `;
 
 const Picture = ({ picture }) => {
-  return <Image src={picture.url ? picture.url : Placeholder} alt="Placeholder image"></Image>;
+  return (
+    <Image
+      src={picture.url ? picture.url : Placeholder}
+      alt="Placeholder image"
+    ></Image>
+  );
 };
 
 export default Picture;

@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -6,12 +6,12 @@ const Container = styled.div`
 `;
 
 const Button = styled.button`
-  background-color: #DD9D14;
+  background-color: #dd9d14;
   padding: 15px;
   border: none;
   color: white;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 10px;
   font-size: 1.2rem;
   margin-bottom: 30px;
   cursor: pointer;
@@ -32,7 +32,11 @@ const DisabledButton = styled.button`
 const SubmitButton = ({ callback, picture, showCamera, disabled }) => {
   return (
     <Container>
-      {!disabled && picture.file && !showCamera ? <Button onClick={e => callback(e)}>Submit</Button> : <DisabledButton disabled >Submit</DisabledButton>}
+      {!disabled && picture.file && !showCamera ? (
+        <Button onClick={(e) => callback(e)}>Submit</Button>
+      ) : (
+        <DisabledButton disabled>Submit</DisabledButton>
+      )}
     </Container>
   );
 };

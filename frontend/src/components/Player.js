@@ -1,8 +1,8 @@
-import React from 'react';
-import Scrollable from './Scrollable';
-import Close from '../assets/images/x.svg';
-import styled from 'styled-components';
-import Placeholder from '../assets/images/placeHolderImage.png';
+import React from "react";
+import Scrollable from "./Scrollable";
+import Close from "../assets/images/x.svg";
+import styled from "styled-components";
+import Placeholder from "../assets/images/placeHolderImage.png";
 
 const Container = styled.div`
   flex: 1.4;
@@ -13,7 +13,7 @@ const Cover = styled.div`
   position: relative;
   width: 100%;
   height: 40vh;
-  background-image: ${props => `url(${props.background})`};
+  background-image: ${(props) => `url(${props.background})`};
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50%;
@@ -26,14 +26,14 @@ const Cover = styled.div`
     border-top-right-radius: 50%;
     border-bottom-right-radius: 50%;
     left: 0;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(0, 0, 0, 0.5);
   }
   .cover-gradient {
     position: absolute;
     width: 100%;
     height: 150px;
     bottom: 0;
-    background: linear-gradient(180deg,transparent 0,rgba(0,0,0,.8));
+    background: linear-gradient(180deg, transparent 0, rgba(0, 0, 0, 0.8));
   }
   .track-name {
     position: absolute;
@@ -45,14 +45,22 @@ const Cover = styled.div`
   }
 `;
 
-const Player = ({ playlist, setPlaylist }) => {
+const formatStr = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+}
 
+const Player = ({ playlist, setPlaylist, mood, gif }) => {
   return (
     <Container>
-      <Cover background={Placeholder}>
-        <img onClick={() => setPlaylist([])} src={Close} alt="Close" className="close" />
+      <Cover background={gif || Placeholder}>
+        <img
+          onClick={() => setPlaylist([])}
+          src={Close}
+          alt="Close"
+          className="close"
+        />
         <div className="cover-gradient"></div>
-        <span className="track-name">X, Y</span>
+        <span className="track-name">{formatStr(mood)} playlist</span>
       </Cover>
       <Scrollable playlist={playlist} setPlaylist={setPlaylist} />
     </Container>

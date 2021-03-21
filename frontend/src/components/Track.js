@@ -1,8 +1,7 @@
-
-import React, { useState, useRef, useEffect } from 'react';
-import Trash from '../assets/images/trash.svg';
-import List from '../assets/images/list.svg';
-import styled from 'styled-components';
+import React from "react";
+import Trash from "../assets/images/trash.svg";
+import List from "../assets/images/list.svg";
+import styled from "styled-components";
 
 const Li = styled.li`
   border-bottom: 1px solid #e1e1e6;
@@ -53,7 +52,7 @@ const Drag = styled.div`
   width: 30px;
   height: 20px;
   cursor: move;
-  background-image: ${props => `url(${props.background})`};
+  background-image: ${(props) => `url(${props.background})`};
   background-size: 80%;
   background-repeat: no-repeat;
   background-position: 3px -1px;
@@ -64,32 +63,53 @@ const Icons = styled.div`
   align-items: center;
 `;
 
-const Track = ({ track, trackPlaying, setTrackPlaying, removeTrack, handleDragStart, handleDragEnter, handleDrop, draggable, setDraggable, dataTransfer, handleDragOver, handleDragEnd }) => {
-
-  const handleDragLeave = e => {
+const Track = ({
+  track,
+  trackPlaying,
+  setTrackPlaying,
+  removeTrack,
+  handleDragStart,
+  handleDragEnter,
+  handleDrop,
+  draggable,
+  setDraggable,
+  dataTransfer,
+  handleDragOver,
+  handleDragEnd,
+}) => {
+  const handleDragLeave = (e) => {
     e.preventDefault();
     e.stopPropagation();
   };
-
-  console.log(track);
+  
   return (
-    <Li className={dataTransfer === track.id ? "hidden" : "visible"} 
-    draggable={draggable} 
-    onDragEnd={handleDragEnd.bind(null)} 
-    onDragStart={handleDragStart.bind(null, track.id)} 
-    onDrop={handleDrop.bind(null, track.id)} 
-    onDragEnter={handleDragEnter.bind(null, track.id)} 
-    onDragLeave={handleDragLeave.bind(null)} 
-    onDragOver={handleDragOver.bind(null)}>
+    <Li
+      className={dataTransfer === track.id ? "hidden" : "visible"}
+      draggable={draggable}
+      onDragEnd={handleDragEnd.bind(null)}
+      onDragStart={handleDragStart.bind(null, track.id)}
+      onDrop={handleDrop.bind(null, track.id)}
+      onDragEnter={handleDragEnter.bind(null, track.id)}
+      onDragLeave={handleDragLeave.bind(null)}
+      onDragOver={handleDragOver.bind(null)}
+    >
       <Text>
-        <Drag onMouseDown={setDraggable.bind(null, true)} onMouseUp={setDraggable.bind(null, false)} background={List} className="drag"></Drag>
-        <span>{track.id}, Y</span>
+        <Drag
+          onMouseDown={setDraggable.bind(null, true)}
+          onMouseUp={setDraggable.bind(null, false)}
+          background={List}
+          className="drag"
+        ></Drag>
+        <span>{track.name}, {track.artists[0].name}</span>
       </Text>
       <Icons>
-        <div className="circle-audio-player">
-
-        </div>
-        <img onClick={removeTrack.bind(null, track.id)} className='trash' src={Trash} alt="Trash" />
+        <div className="circle-audio-player"></div>
+        <img
+          onClick={removeTrack.bind(null, track.id)}
+          className="trash"
+          src={Trash}
+          alt="Trash"
+        />
       </Icons>
     </Li>
   );

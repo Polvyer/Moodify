@@ -23,7 +23,7 @@ const Input = styled.input`
 const CustomInput = ({ changePicture }) => {
   return (
     <Label htmlFor="file-upload">
-      <Input onChange={e => changePicture(e)} id="file-upload" type="file" />
+      <Input onChange={(e) => changePicture(e)} id="file-upload" type="file" />
       Upload Image
     </Label>
   );

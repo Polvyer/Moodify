@@ -1,21 +1,16 @@
 import axios from "axios";
-import {GIPHY_SEARCH_ENDPOINT} from '../constants/constants';
+import { GIPHY_SEARCH_ENDPOINT } from "../constants/constants";
 
-const GIPHYAPI =
-{
-    search: (title) =>{
-        const config = {
-            method: 'GET'
-        };
-            // Query Parameters
-            const q = title.split(' ').join('%20');
+const GiphyAPI = {
+  search: (str) => {
 
-            const url = GIPHY_SEARCH_ENDPOINT + q;
-            
+    // Query Parameters
+    const q = str.split(" ").join("%20");
 
-            return axios(url, config);
-    },
-    
+    const url = GIPHY_SEARCH_ENDPOINT + q;
+
+    return axios.get(url)
+  },
 };
 
 Object.freeze(GiphyAPI);

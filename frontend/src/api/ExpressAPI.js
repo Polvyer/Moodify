@@ -16,8 +16,8 @@ const ExpressAPI = {
   getMood: (formData) => {
     const config = {
       headers: {
-        'content-type': 'multipart/form-data',
-      }
+        "content-type": "multipart/form-data",
+      },
     };
 
     return axios.post(VISION_ENDPOINT, formData, config);

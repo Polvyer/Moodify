@@ -1,81 +1,90 @@
 import React from "react";
 import styled from "styled-components";
 
-
-
 const Body = styled.div`
-    $r-dot: 1em;
-    $d-dot: 2*$r-dot;
-    $l-pad: 6.25*$r-dot; 
-
-    display: grid;
-    overflow: hidden;
-    margin: 0;
-    height: 100vh;
-    background: #DD9D14;
-
-    &::before{
-        padding: $l-pad + $r-dot;
-        background: radial-gradient(#29385E $l-pad - 3*$r-dot, #DD9D14 $l-pad - $d-dot);
-        content: '';
-    }
-
-    &::after{
-        position: absolute;
-        top: calc(50% + #{$l-pad}); left: 50%;
-        transform: translate(-50%);
-        color: rgba(#fff, .5);
-        font: 200 1.5em/1.25 sans-serif;
-        letter-spacing: 1px;
-        text-transform: uppercase;
-        animation: f 1s ease-in-out infinite alternate;
-        content: 'loading';
-    }
-
-    @keyframes f{ to{ opacity: 0 } }
-
-    div, ::before, ::after{
-        place-self: center;
-        grid-column: 1;
-        grid-row: 1;
-    }
-    .loader{
-        display: grid;
-        padding: $d-dot;
-        background: inherit;
-        filter: contrast(9);
-        mix-blend-mode: multiply;
-
-        &::before, &::after{
-            padding: $l-pad;
-            --stops: #fff calc(#{$r-dot} - 1px), transparent #{$r-dot};
-            background: 
-                radial-gradient(circle at $r-dot, var(--stops)),
-                radial-gradient(circle at 50% $r-dot, var(--stops)),
-                radial-gradient(circle at calc(100% - #{$r-dot}), var(--stops)),
-                radial-gradient(circle at 50% calc(100% - #{$r-dot}), var(--stops));
-            filter: blur(9px);
-                animation: a .875s ease-in-out infinite;
-                content: ''
-        }
-        &::before { animation-name: b}
-    }
-
-    @keyframes a {33.33%, 66.67%{ padding: $r-dot } }
-
-    @keyframes b {
-        33.33% { transform: rotate(0deg)} 
-        66.67%, 100% { transform: rotate(90deg) }
-    }
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: black;
+  overflow: hidden;
 `;
 
-const CSLoader = () => {
-    return (
-        <>
-          <Body class='loader'/>
-        </>
-    );
-  };
+const Loader = styled.div`
+  width: 10em;
+  height: 10em;
+  font-size: 25px;
+  box-sizing: border-box;
+  border-top: 0.3em solid hotpink;
+  border-radius: 50%;
+  position: relative;
+  animation: rotating 2s ease-in-out infinite;
 
+  @keyframes rotating {
+    50% {
+      transform: rotate(180deg);
+    }
 
-export default CSLoader;
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  :before {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+    border-top: 0.3em solid dodgerblue;
+    transform: rotate(120deg);
+  }
+
+  :after {
+    content: "";
+    position: absolute;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    box-sizing: border-box;
+    top: -0.2em;
+    border-top: 0.3em solid gold;
+    transform: rotate(240deg);
+  }
+`;
+
+const Span = styled.span`
+  position: absolute;
+  color: white;
+  width: inherit;
+  height: inherit;
+  text-align: center;
+  line-height: 10em;
+  font-family: sans-serif;
+  animation: rotating 2s linear infinite;
+
+  @keyframes rotating {
+    50% {
+      transform: rotate(-180deg);
+    }
+
+    100% {
+      transform: rotate(-360deg);
+    }
+  }
+`;
+
+const CSSLoader = () => {
+  return (
+    <Body>
+      <Loader>
+        <Span>Loading...</Span>
+      </Loader>
+    </Body>
+  );
+};
+
+export default CSSLoader;
