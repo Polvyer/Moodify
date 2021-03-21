@@ -9,10 +9,14 @@ const Button = styled.button`
   border-radius: 10px;
   font-weight: 600;
   font-size: 1.2rem;
+  
+  :focus {
+    outline: none;
+  }
 `;
 
-const ImageButtons = (props) => {
-  return <Button>{props.text}</Button>
+const TakePictureButton = ({ text, callback }) => {
+  return <Button onClick={() => callback(prevState => !prevState)}>{text}</Button>
 };
 
-export default ImageButtons;
+export default TakePictureButton;
