@@ -2,17 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 const Bubble = styled.div`
-  background: #e1c297;
-  color: white;
-  text-align: center;
   position: relative;
   font-family: sans-serif;
   font-size: 18px;
   line-height: 25px;
   width: 300px;
+  background: #e1c297;
   border-radius: 25px;
   padding: 10px;
   text-align: center;
+  color: #fff;
 
   :before {
     content: "";
@@ -32,15 +31,13 @@ const B = styled.b`
   color: #191f31;
 `;
 
-const SpeechBubble = () => {
+const Extra = () => {
   return (
-    <>
-      <Bubble>
-        Hello, we are <B>Moodify</B>! Let us find out how you are feeling to
-        select the right playlist for you!
-      </Bubble>
-    </>
+    <Bubble>
+      Hover over any track that catches your interest and click on its play
+      button to start the video! <B>Enjoy!</B>
+    </Bubble>
   );
 };
 
-export default SpeechBubble;
+export default Extra;

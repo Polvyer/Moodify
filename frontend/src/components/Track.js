@@ -2,6 +2,7 @@ import React from "react";
 import Trash from "../assets/images/trash.svg";
 import List from "../assets/images/list.svg";
 import styled from "styled-components";
+import Play from "../assets/images/play-fill.svg";
 
 const Li = styled.li`
   border-bottom: 1px solid #e1e1e6;
@@ -17,8 +18,10 @@ const Li = styled.li`
     visibility: hidden;
     margin-right: 10px;
   }
-  .circle-audio-player {
+  .play {
     visibility: hidden;
+    width: 2.1em;
+    margin-left: 5px;
   }
   .trash {
     visibility: hidden;
@@ -31,7 +34,7 @@ const Li = styled.li`
     .drag {
       visibility: visible;
     }
-    .circle-audio-player {
+    .play {
       visibility: visible;
       cursor: pointer;
     }
@@ -65,8 +68,6 @@ const Icons = styled.div`
 
 const Track = ({
   track,
-  trackPlaying,
-  setTrackPlaying,
   removeTrack,
   handleDragStart,
   handleDragEnter,
@@ -76,12 +77,13 @@ const Track = ({
   dataTransfer,
   handleDragOver,
   handleDragEnd,
+  selectUrl,
 }) => {
   const handleDragLeave = (e) => {
     e.preventDefault();
     e.stopPropagation();
   };
-  
+
   return (
     <Li
       className={dataTransfer === track.id ? "hidden" : "visible"}
@@ -100,10 +102,17 @@ const Track = ({
           background={List}
           className="drag"
         ></Drag>
-        <span>{track.name}, {track.artists[0].name}</span>
+        <span>
+          {track.name}, {track.artists[0].name}
+        </span>
       </Text>
       <Icons>
-        <div className="circle-audio-player"></div>
+        <img
+          onClick={selectUrl.bind(null, track)}
+          className="play"
+          src={Play}
+          alt="Play"
+        />
         <img
           onClick={removeTrack.bind(null, track.id)}
           className="trash"

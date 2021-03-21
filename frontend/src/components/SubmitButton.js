@@ -23,7 +23,7 @@ const DisabledButton = styled.button`
   border: none;
   color: white;
   border-radius: 10px;
-  margin-top: 30px;
+  margin-top: 10px;
   font-size: 1.2rem;
   margin-bottom: 30px;
   cursor: not-allowed;

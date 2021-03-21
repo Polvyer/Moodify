@@ -11,7 +11,12 @@ const VISION_ENDPOINT = EXPRESS_BASE_URL + "/vision";
 /* Spotify API Endpoints */
 const SPOTIFY_SEARCH_ENDPOINT = "https://api.spotify.com/v1/search";
 
-/*GIPHY API KEY*/
+/* YouTube API Endpoints */
+const YOUTUBE_SEARCH_ENDPOINT =
+  "https://www.googleapis.com/youtube/v3/search?videoDefinition=any&part=snippet&videoEmbeddable=true";
+const YOUTUBE_EMBED_URL = "https://www.youtube.com/embed/";
+
+/* GIPHY API KEY*/
 const APIKEY = "La98BpaXzKmJ61D8xAsleB5HU1IgTrX0";
 const GIPHY_SEARCH_ENDPOINT = `https://api.giphy.com/v1/gifs/search?api_key=${APIKEY}&limit=1&q=`;
 
@@ -33,4 +38,6 @@ export {
   VISION_ENDPOINT,
   SPOTIFY_SEARCH_ENDPOINT,
   GIPHY_SEARCH_ENDPOINT,
+  YOUTUBE_SEARCH_ENDPOINT,
+  YOUTUBE_EMBED_URL,
 };

@@ -29,12 +29,13 @@ const Bubble = styled.div`
 
 const B = styled.b`
   color: #191f31;
-`
+`;
 
 const PhotoSpeechBubble = () => {
   return (
     <Bubble>
-      Click on <B>"Upload Image"</B> to upload an existing image or <B>"Take Picture"</B> to open up the Webcam!
+      Click on <B>"Upload Image"</B> to upload an existing image or{" "}
+      <B>"Take Picture"</B> to open up the Webcam!
     </Bubble>
   );
 };

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useToken } from "./hooks/useToken";
 import ExpressAPI from "../src/api/ExpressAPI";
 import SpotifyAPI from "./api/SpotifyAPI";
@@ -7,7 +7,7 @@ import GiphyAPI from "./api/GiphyAPI";
 /* Components */
 import Home from "./components/Home";
 import CSSLoader from "./components/CSSLoader";
-import Playlist from './components/Playlist';
+import Playlist from "./components/Playlist";
 
 const App = () => {
   const [disabled, setDisabled] = useState(false);
@@ -19,6 +19,20 @@ const App = () => {
   const [playlist, setPlaylist] = useState([]);
   const [mood, setMood] = useState(null);
   const [gif, setGif] = useState(null);
+  const [apiKey, setAPIKey] = useState(null);
+
+  useEffect(() => {
+    async function getKey() {
+      try {
+        const response = await ExpressAPI.getKey();
+        setAPIKey(response.data.key);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+
+    getKey();
+  }, []);
 
   // Returns 'sad', 'happy', 'angry', 'surprise'
   const getMood = (obj) => {
@@ -98,17 +112,28 @@ const App = () => {
 
   const content = () => {
     if (playlist.length > 0) {
-      return <Playlist gif={gif} mood={mood} playlist={playlist} setPlaylist={setPlaylist} />;
+      return (
+        <Playlist
+          gif={gif}
+          mood={mood}
+          playlist={playlist}
+          setPlaylist={setPlaylist}
+          apiKey={apiKey}
+        />
+      );
     }
 
-    return <Home submit={submit} picture={picture} setPicture={setPicture} disabled={disabled} />;
+    return (
+      <Home
+        submit={submit}
+        picture={picture}
+        setPicture={setPicture}
+        disabled={disabled}
+      />
+    );
   };
 
-  return (
-    <>
-      { disabled ? <CSSLoader /> : content()}
-    </>
-  );
+  return <>{disabled ? <CSSLoader /> : content()}</>;
 };
 
 export default App;

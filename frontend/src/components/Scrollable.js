@@ -23,15 +23,13 @@ const Ul = styled.ul`
   }
 `;
 
-const Scrollable = ({ playlist, setPlaylist }) => {
+const Scrollable = ({ playlist, setPlaylist, selectUrl }) => {
   const [trackPlaying, setTrackPlaying] = useState(null);
   const [draggable, setDraggable] = useState(false);
   const [dataTransfer, setDataTransfer] = useState(null);
 
-  console.log(playlist);
-
   const removeTrack = (track_id) => {
-    const playlistIds = playlist.map((track) => track.id);
+    const playlistIds = playlist.map((track) => track.track.id);
     const indexFound = playlistIds.findIndex((id) => track_id === id);
     const newPlaylist = [...playlist];
     newPlaylist.splice(indexFound, 1);
@@ -85,6 +83,7 @@ const Scrollable = ({ playlist, setPlaylist }) => {
     <Ul>
       {playlist.map((track) => (
         <Track
+          selectUrl={selectUrl}
           key={track.track.id}
           trackPlaying={trackPlaying}
           setTrackPlaying={setTrackPlaying}

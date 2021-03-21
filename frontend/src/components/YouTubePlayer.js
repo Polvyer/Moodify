@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Extra from "./Extra";
+import Ghost from "../assets/images/bad3361ef1e3546d-.gif";
 
 const Container = styled.div`
   flex: 1;
@@ -11,9 +13,12 @@ const Container = styled.div`
   }
 `;
 
-const YouTubePlayer = () => {
-  const url = "https://www.youtube.com/embed/E7wJTI-1dvQ";
+const Holder = styled.div`
+  margin-top: 50px;
+  margin-left: 40px;
+`;
 
+const YouTubePlayer = ({ url }) => {
   return (
     <Container>
       <iframe
@@ -23,6 +28,15 @@ const YouTubePlayer = () => {
         allowfullscreen
         title="video"
       />
+      <Holder>
+        <Extra />
+        <img
+          style={{ marginTop: "20px" }}
+          src={Ghost}
+          width="100"
+          alt="ghost"
+        />
+      </Holder>
     </Container>
   );
 };

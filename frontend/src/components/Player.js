@@ -47,9 +47,9 @@ const Cover = styled.div`
 
 const formatStr = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1);
-}
+};
 
-const Player = ({ playlist, setPlaylist, mood, gif }) => {
+const Player = ({ playlist, setPlaylist, mood, gif, selectUrl }) => {
   return (
     <Container>
       <Cover background={gif || Placeholder}>
@@ -62,7 +62,11 @@ const Player = ({ playlist, setPlaylist, mood, gif }) => {
         <div className="cover-gradient"></div>
         <span className="track-name">{formatStr(mood)} playlist</span>
       </Cover>
-      <Scrollable playlist={playlist} setPlaylist={setPlaylist} />
+      <Scrollable
+        selectUrl={selectUrl}
+        playlist={playlist}
+        setPlaylist={setPlaylist}
+      />
     </Container>
   );
 };

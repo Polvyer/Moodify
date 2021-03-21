@@ -8,8 +8,8 @@ import ImageOptions from "./ImageOptions";
 import Camera from "./Camera";
 import SubmitButton from "./SubmitButton";
 import PhotoSpeechBubble from "./PhotoSpeechBubble";
-import SpeechBubble from './SpeechBubble';
-import Ghost from '../assets/images/bad3361ef1e3546d-.gif'
+import SpeechBubble from "./SpeechBubble";
+import Ghost from "../assets/images/bad3361ef1e3546d-.gif";
 
 const PictureContainer = styled.div`
   display: flex;
@@ -81,7 +81,12 @@ const Home = ({ submit, disabled, picture, setPicture }) => {
       </Intro>
       <Introductions>
         <PhotoSpeechBubble />
-        <img style={{"margin-top": "20px"}} src={Ghost} width="100" alt="ghost" />
+        <img
+          style={{ marginTop: "20px" }}
+          src={Ghost}
+          width="100"
+          alt="ghost"
+        />
       </Introductions>
       <div>
         <PictureContainer>
