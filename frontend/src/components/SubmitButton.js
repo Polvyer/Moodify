@@ -7,9 +7,11 @@ const Container = styled.div`
 
 const Button = styled.button`
   background-color: #DD9D14;
-  padding: 10px;
+  padding: 15px;
   border: none;
   color: white;
+  border-radius: 10px;
+  margin-top: 30px;
 `;
 
 const SubmitButton = ({ callback }) => {
