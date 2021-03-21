@@ -1,6 +1,7 @@
 import React from 'react';
 import ImageButtons from './ImageButton';
 import styled from "styled-components";
+import FileInput from './FileInput';
 
 const Container = styled.div`
   display: flex;
@@ -31,7 +32,7 @@ const Buttons = () => {
     <Container>
       <ImageButtons text="Upload Image" />
       <Text>OR</Text>
-      <ImageButtons text="Upload Image" />
+      <ImageButtons text="Take Picture" />
     </Container>
   );
 };

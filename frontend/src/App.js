@@ -20,6 +20,7 @@ const App = () => {
       <div>
         <Picture />
         <ImageOptions />
+        <FileInput/>
       </div>
     </>
   );
