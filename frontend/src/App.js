@@ -8,6 +8,7 @@ import Logo from "./components/Logo";
 import Picture from "./components/Picture";
 import ImageOptions from "./components/ImageOptions";
 import Camera from "./components/Camera";
+import SubmitButton from './components/SubmitButton';
 
 const PictureContainer = styled.div`
   display: flex;
@@ -51,7 +52,7 @@ const App = () => {
     }
   };
 
-  const submit = () => {
+  const submit = (e) => {
     const formData = new FormData();
     formData.append('file', picture.file);
 
@@ -79,6 +80,7 @@ const App = () => {
           {showCamera ? <Camera setShowCamera={setShowCamera} picture={picture} setPicture={setPicture} /> : <Picture picture={picture} />}
         </PictureContainer>
         <ImageOptions changePicture={changePicture} showCamera={showCamera} setShowCamera={setShowCamera} />
+        <SubmitButton callback={submit} />
       </div>
     </>
   );
