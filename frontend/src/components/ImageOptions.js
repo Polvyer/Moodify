@@ -1,6 +1,7 @@
-import React from 'react';
-import TakePictureButton from './TakePictureButton';
+import React, { useState } from "react";
+import TakePictureButton from "./TakePictureButton";
 import styled from "styled-components";
+import CustomInput from "./CustomInput";
 
 const Container = styled.div`
   display: flex;
@@ -8,7 +9,6 @@ const Container = styled.div`
   align-items: center;
   margin-top: 40px;
   width: 100%;
-  transform: translateX(-1.6em);
 
   @media screen and (max-width: 450px) {
     transform: translateX(0);
@@ -26,12 +26,15 @@ const Text = styled.b`
   text-align: center;
 `;
 
-const Buttons = ({ showCamera, setShowCamera }) => {
+const Buttons = ({ showCamera, setShowCamera, changePicture }) => {
   return (
     <Container>
-      <TakePictureButton text="Upload Image" />
+      <CustomInput changePicture={changePicture} />
       <Text>OR</Text>
-      <TakePictureButton callback={setShowCamera} text={showCamera ? "Hide Camera" : "Take Picture"} />
+      <TakePictureButton
+        callback={setShowCamera}
+        text={showCamera ? "Hide Camera" : "Take Picture"}
+      />
     </Container>
   );
 };

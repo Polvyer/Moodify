@@ -9,14 +9,17 @@ const Button = styled.button`
   border-radius: 10px;
   font-weight: 600;
   font-size: 1.2rem;
-  
+  cursor: pointer;
+
   :focus {
     outline: none;
   }
 `;
 
 const TakePictureButton = ({ text, callback }) => {
-  return <Button onClick={() => callback(prevState => !prevState)}>{text}</Button>
+  return (
+    <Button onClick={() => callback((prevState) => !prevState)}>{text}</Button>
+  );
 };
 
 export default TakePictureButton;

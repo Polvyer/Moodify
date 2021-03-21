@@ -1,5 +1,5 @@
-import React from 'react';
-import Spotify from '../assets/images/Spotify-Icon-Black-Logo.svg';
+import React from "react";
+import Spotify from "../assets/images/Spotify-Icon-Black-Logo.svg";
 import styled from "styled-components";
 
 const Container = styled.header`
@@ -16,7 +16,6 @@ const Title = styled.h1`
 `;
 
 const ImageContainer = styled.div`
-  transform: translateX(-1em);
   position: relative;
 
   ::after {
@@ -24,24 +23,21 @@ const ImageContainer = styled.div`
     display: inline-block;
     font-size: 1rem;
     transform: translate(-50%, -50%);
-    top: 49%;
+    top: 50%;
     left: 50%;
     width: 2.8em;
     height: 2.8em;
-    background-color: black;
+    background-color: #191f31;
     position: absolute;
     border-radius: 50%;
     z-index: -1;
-  }
-
-  @media screen and (max-width: 450px) {
-    transform: translateX(0);
   }
 `;
 
 const Image = styled.img`
   width: 8em;
-  filter: invert(99%) sepia(7%) saturate(31%) hue-rotate(333deg) brightness(106%) contrast(100%);
+  filter: invert(99%) sepia(7%) saturate(31%) hue-rotate(333deg)
+    brightness(106%) contrast(100%);
 `;
 
 const Logo = () => {
