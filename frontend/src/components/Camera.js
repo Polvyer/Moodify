@@ -1,7 +1,21 @@
 import React, { useEffect, useRef } from "react";
+import styled from 'styled-components';
 
-const Camera = ({ setPicture }) => {
+const Container = styled.div`
+  position: relative;
+`;
+
+const Button = styled.button`
+  position: absolute;
+  padding: 10px;
+  bottom: -25px;
+  transform: translate(-50%, -50%);
+  left: 50%;
+`;
+
+const Camera = ({ setPicture, picture, setShowCamera }) => {
   const videoRef = useRef();
+  const canvasRef = useRef();
 
   useEffect(() => {
     const video = videoRef.current;
@@ -23,12 +37,38 @@ const Camera = ({ setPicture }) => {
     };
   }, []);
 
+  const takePicture = (e) => {
+    const context = canvasRef.current.getContext("2d");
+    console.log(context);
+    context.drawImage(videoRef.current, 0, 0, 380, 240);
+    const url = canvasRef.current.toDataURL('image/png');
+    changePicture(url);
+  };
+
+  const changePicture = (url) => {
+      // Remove current picture (if any)
+      if (picture.url) { // imageFile !== null (avoid memory issues)
+        URL.revokeObjectURL(picture.url);
+      }
+
+      // Set picture
+      setPicture({
+        file: null,
+        url
+      });
+
+      // Hide camera
+      setShowCamera(false);
+  };
+
   return (
-    <div className="camera">
+    <Container className="camera">
+      <canvas ref={canvasRef} width="380" height="300" style={{"display": "none"}}></canvas>
       <video ref={videoRef} width="380" height="300" id="video">
         Video stream not available.
       </video>
-    </div>
+      <Button onClick={e => takePicture(e)}>Take photo</Button>
+    </Container>
   );
 };
 

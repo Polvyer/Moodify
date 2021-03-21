@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { useToken } from "./hooks/useToken";
+import axios from 'axios';
 
 /* Components */
 import Logo from "./components/Logo";
@@ -25,7 +26,6 @@ const App = () => {
   console.log("Token:", token);
   console.log("Picture:", picture);
 
-  // Handles image upload
   const changePicture = (e) => {
     if (e.target.files.length > 0) { // Prevents a weird bug that happens when a user uploads, but then cancels
 
@@ -35,15 +35,40 @@ const App = () => {
         return;
       }
 
+      // Remove current picture (if any)
       if (picture.url) { // imageFile !== null (avoid memory issues)
         URL.revokeObjectURL(picture.url);
       }
 
+      // Set picture
       setPicture({
         file: e.target.files[0],
         url: URL.createObjectURL(e.target.files[0])
       });
+
+      // Hide camera
+      setShowCamera(false);
     }
+  };
+
+  const submit = () => {
+    const formData = new FormData();
+    formData.append('file', picture.file);
+
+    const config = {
+      headers: {
+        'content-type': 'multipart/form-data',
+      }
+    };
+
+    axios.post('/api/posts', formData, config)
+      .then(response => {
+        if (response.status === 200) {
+          console.log(response.data);
+        }
+      }).catch(error => {
+        console.log(error);
+      });
   };
 
   return (
@@ -51,7 +76,7 @@ const App = () => {
       <Logo />
       <div>
         <PictureContainer>
-          {showCamera ? <Camera setPicture={setPicture} /> : <Picture picture={picture} />}
+          {showCamera ? <Camera setShowCamera={setShowCamera} picture={picture} setPicture={setPicture} /> : <Picture picture={picture} />}
         </PictureContainer>
         <ImageOptions changePicture={changePicture} showCamera={showCamera} setShowCamera={setShowCamera} />
       </div>
